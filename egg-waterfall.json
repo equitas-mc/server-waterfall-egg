@@ -1,0 +1,26 @@
+{
+    "meta": {
+        "version": "PTDL_v1"
+    },
+    "exported_at": "2020-04-22T12:54:33-05:00",
+    "name": "Waterfall",
+    "author": "tooangel@tooangel.de",
+    "description": "Waterfall multi server proxy.",
+    "image": "quay.io\/pterodactyl\/core:java",
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar waterfall.jar",
+    "config": {
+        "files": "{\r\n    \"config.yml\": {\r\n        \"parser\": \"yaml\",\r\n        \"find\": {\r\n            \"listeners[0].host\": \"0.0.0.0:{{server.build.default.port}}\",\r\n            \"servers.*.address\": {\r\n                \"127.0.0.1\": \"{{config.docker.interface}}\",\r\n                \"localhost\": \"{{config.docker.interface}}\"\r\n            }\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Listening on \",\r\n    \"userInteraction\": [\r\n        \"Listening on \/0.0.0.0:\"\r\n    ]\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"proxy.log.0\"\r\n}",
+        "stop": "end"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y git\r\n\r\ncd \/mnt\/server\r\n\r\nrm -rf server-egg\r\ngit clone --recursive https:\/\/github.com\/equitas-mc\/server-waterfall-egg.git server-egg\r\n./server-egg/setup.sh",
+            "container": "debian:buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+    ]
+}

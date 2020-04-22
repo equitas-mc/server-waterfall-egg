@@ -1,0 +1,63 @@
+prevent_proxy_connections: false
+listeners:
+- query_port: 25565
+  motd: '&lEquitas'
+  tab_list: GLOBAL_PING
+  query_enabled: true
+  proxy_protocol: false
+  forced_hosts:
+    pvp.md-5.net: pvp
+  ping_passthrough: false
+  priorities:
+  - hub
+  - sky
+  bind_local_address: true
+  host: 0.0.0.0:25565
+  max_players: 200
+  tab_size: 50
+  force_default_server: true
+remote_ping_cache: -1
+network_compression_threshold: 256
+permissions:
+  default:
+  - bungeecord.command.server
+  - bungeecord.command.list
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+log_pings: true
+connection_throttle_limit: 3
+server_connect_timeout: 5000
+timeout: 30000
+player_limit: -1
+ip_forward: false
+groups:
+  md_5:
+  - admin
+remote_ping_timeout: 5000
+connection_throttle: 4000
+log_commands: false
+stats: ed9e19c6-a895-4a09-a0bc-d3979de20ce3
+online_mode: true
+forge_support: false
+disabled_commands:
+- disabledcommandhere
+servers:
+  hub:
+    motd: '&1Equitas Hub'
+    address: greaper88.ddns.us:25596
+    restricted: false
+  survival:
+    motd: '&1Equitas Survival'
+    address: 172.18.0.1:25601
+    restricted: false
+  creative:
+    motd: '&1Equitas Creative'
+    address: 172.18.0.1:25602
+    restricted: false
+  sky:
+    motd: '&1Equitas Skyblock'
+    address: 172.18.0.1:25603
+    restricted: false
